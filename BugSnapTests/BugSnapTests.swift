@@ -10,10 +10,16 @@ import Testing
 
 struct BugSnapTests {
 
-    @Test func example() async throws {
-        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
-        // Swift Testing Documentation
-        // https://developer.apple.com/documentation/testing
+    @Test("Черновик без названия нельзя сохранить")
+    func draftWithoutTitleIsInvalid() {
+        // Arrange
+        let draft = BugReportDraft()
+        
+        // Act
+        let isValid = BugReportValidator.isValid(draft)
+        
+        // Assert
+        #expect(isValid == false)
     }
 
 }
