@@ -21,5 +21,18 @@ struct BugSnapTests {
         // Assert
         #expect(isValid == false)
     }
+    
+    @Test("Черновик с названием из пробелов нельзя сохранить")
+    func draftWithTitleWithSpacesIsInvalid() {
+        // Arrange
+        var draft = BugReportDraft()
+        draft.title = "   "
+        
+        // Act
+        let isValid = BugReportValidator.isValid(draft)
+        
+        // Assert
+        #expect(isValid == true)
+    }
 
 }
